@@ -56,7 +56,6 @@ func kidsWithCandies(candies []int, extraCandies int) []bool {
 	}
 
 	for i := range candies {
-		fmt.Println(i)
 		ans[i] = (candies[i] + extraCandies) >= m
 	}
 
