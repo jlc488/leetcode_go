@@ -28,7 +28,23 @@ Output: "alGalooG"
 */
 import "strings"
 
-func interpret(command string) string {
+func interpret1(command string) string {
 	command = strings.ReplaceAll(command, "(al)", "al")
 	return strings.ReplaceAll(command, "()", "o")
+}
+
+func interpret2(command string) string {
+	var sb strings.Builder
+	for i := 0; i < len(command); i++ {
+		if command[i] == 'G' {
+			sb.WriteByte('G')
+		} else if command[i] == '(' && command[i+1] == ')' {
+			sb.WriteByte('o')
+			i++
+		} else {
+			sb.WriteString("al")
+			i += 3
+		}
+	}
+	return sb.String()
 }
